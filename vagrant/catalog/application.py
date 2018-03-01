@@ -482,7 +482,7 @@ def getUserID(email):
 # JSON APIs to view food group information
 @app.route('/foodgroup/<int:foodgroup_id>/item/JSON')
 def foodGroupJSON(foodgroup_id):
-    foodgroup = session.query(FoodGroup).filter_by(id=foodgroup_id).one()
+    foodgroup = session.query(Foodroup).filter_by(id=foodgroup_id).one()
     items = session.query(FoodItem).filter_by(
         foodgroup_id=foodgroup_id).all()
     return jsonify(FoodItems=[i.serialize for i in items])
