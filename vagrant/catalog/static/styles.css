@@ -1,0 +1,8 @@
+body {
+	background-color: rgba(32,32,32, .3)
+}
+.flash {
+	background-color: lime;
+	border-radius: 5px;
+	color: #fff;
+}

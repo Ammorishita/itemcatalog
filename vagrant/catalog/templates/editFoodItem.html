@@ -1,0 +1,47 @@
+{% extends "main.html" %}
+{% include "header.html" %}
+{% block content %}
+	<div class="row divider green">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="row banner menu">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<h1>Edit Food Item</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-1 padding-top">
+			<form action="#" method = "post">
+				<div class="form-group">
+					<label for="name">Name:</label>
+					<input type ="text" maxlength="100" class="form-control" name="name" value="{{item.name }}">
+
+					<label for="price">Calories:</label>
+					<div class="input-group">
+						<input type ="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10" class="form-control" name="calories" value="{{item.price}}">
+					</div>
+
+					<label for="price">Carbohydrates:</label>
+					<div class="input-group">
+						<input type ="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10" class="form-control" name="carbs" value="{{item.carbs}}">
+					</div>
+
+					<label for="price">Sugars:</label>
+					<div class="input-group">
+						<input type ="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10" class="form-control" name="sugars" value="{{item.sugars}}">
+					</div>
+
+					<label for="price">Fats:</label>
+					<div class="input-group">
+						<input type ="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10" class="form-control" name="fats" value="{{item.fats}}">
+					</div>
+
+					<a href="{{ url_for('editFoodItem', foodgroup_id = foodgroup_id, fooditem_id = item.id) }}">
+					<button type="submit" class="btn btn-default" id="submit" type="submit">
+					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Save</button>
+					</a>
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}

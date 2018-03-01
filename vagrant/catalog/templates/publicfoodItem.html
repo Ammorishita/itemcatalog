@@ -1,0 +1,34 @@
+{% extends "main.html" %}
+{% include "header.html" %}
+{% block content %}
+	<div class="container-fluid">
+		<div class = 'flash'>
+		    {% with messages = get_flashed_messages() %}
+		      {% if messages %}
+		          
+		        <ul>
+		        {% for message in messages %}
+		            <li> <strong> {{ message }} </strong> </li>
+		        {% endfor %}
+		        </ul>
+		        {% endif %}
+		    {% endwith %}
+
+		</div>
+		<h2>Food Group: {{ foodgroup.name }}</h2>
+		{% for items in fooditems %}
+		<div class="card">
+		  <div class="card-body">
+		    <h5 class="card-title list-group-item list-group-item-success">{{items.name}}</h5>
+			<li class="card-text list-group-item list-group-item-primary">Calories: {{items.calories}}</li>
+			<li class="card-text list-group-item list-group-item-primary">Carbohydates: {{items.carbs}}g</li>
+			<li class="card-text list-group-item list-group-item-primary">Sugars: {{items.sugars}}g</li>
+			<li class="card-text list-group-item list-group-item-primary">Fats: {{items.fats}}g</li>
+		  </div>
+		</div>
+		{% endfor %}
+		{% if foodgroup.id < 6 %}
+		<p>To add your own items, <a href="{{url_for('showLogin')}}">log in</a> with your account.</p>
+		{% endif %}
+	</div>
+{% endblock %}

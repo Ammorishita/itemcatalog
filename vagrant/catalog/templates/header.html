@@ -1,0 +1,39 @@
+<div class="">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<div class="navbar-nav col-md-10">
+				<li class="nav-item">
+					<a class="nav-link" href="{{url_for('showFoodGroups')}}">
+						<span class="glyphicon glyphicon-home" aria-hidden="true"></span>Show All Food Groups
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/foodgroup/1">Grains</a>					
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/foodgroup/2">Metas and Poultry</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/foodgroup/3">Milks and Cheese</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/foodgroup/4">Fruits</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/foodgroup/5">Vegetalbes</a>
+				</li>
+			</div>
+			<div class="navbar-nav col-md-2">
+				{%if 'username' not in session %}
+				<a href="{{url_for('showLogin')}}">Click Here to Login </a>
+				{% else %}
+				<a href="{{url_for('disconnect')}}">Logout </a>
+				{% endif %}
+				
+			</div>
+		</div>
+	</nav>
+</div>

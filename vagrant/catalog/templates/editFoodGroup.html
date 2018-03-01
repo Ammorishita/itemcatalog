@@ -1,0 +1,27 @@
+{% extends "main.html" %}
+{% include "header.html" %}
+{% block content %}
+	<div class="row divider green">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="row banner menu">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<h1>Edit Food Group</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-1 padding-top">
+			<form action="#" method = "post">
+				<div class="form-group">
+					<label for="name">Name:</label>
+					<input type ="text" maxlength="100" class="form-control" name="name" value="{{item.name }}">
+
+					<a href="{{ url_for('editFoodGroup', foodgroup_id = foodgroup_id, fooditem_id = item.id) }}">
+					<button type="submit" class="btn btn-success mt-3" id="submit" type="submit">
+					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Save</button>
+					</a>
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "main.html" %}
+{% include "header.html" %}
+{% block content %}
+<h1>Food Groups</h1>
+<div class="mb-3">
+  <a class="btn btn-success" href="{{url_for('newFoodGroup')}}">
+    <h4>Create your own group</h4>
+  </a>
+</div>
+<div class = 'flash'>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        
+      <ul>
+      {% for message in messages %}
+          <li> <strong> {{ message }} </strong> </li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+</div>
+  {% for item in foodgroup %}
+    <a href="{{url_for('showFoodItem', foodgroup_id = item.id) }}">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{item.name}}</h5>
+          <a class="btn btn-info" href="{{url_for('editFoodGroup', foodgroup_id = item.id) }}">Edit Food Group Name</a>
+          <a class="btn btn-danger" href="{{url_for('deleteFoodGroup', foodgroup_id = item.id) }}">Delete Group</a>
+        </div>
+      </div>
+    </a>
+  {% endfor %}
+{% endblock %}

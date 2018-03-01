@@ -1,0 +1,37 @@
+{% extends "main.html" %}
+{% include "header.html" %}
+{% block content %}
+	<div class="">
+
+		<div class = 'flash'>
+		    {% with messages = get_flashed_messages() %}
+		      {% if messages %}
+		          
+		        <ul>
+		        {% for message in messages %}
+		            <li> <strong> {{ message }} </strong> </li>
+		        {% endfor %}
+		        </ul>
+		        {% endif %}
+		    {% endwith %}
+
+		</div>
+		<h2>Food Group: {{ foodgroup.name }}</h2>
+		<div class=" mb-3 mt-4">
+			<a class="btn btn-success" href="{{url_for('newFoodItem', foodgroup_id = foodgroup.id) }}">Add New Food Item</a>
+		</div>
+		{% for items in fooditems %}
+		<div class="card mb-5">
+		  <div class="card-body">
+		    <h5 class="card-title list-group-item list-group-item-success">{{items.name}}</h5>
+			<li class="card-text list-group-item list-group-item-primary">Calories: {{items.calories}}</li>
+			<li class="card-text list-group-item list-group-item-primary">Carbohydates: {{items.carbs}}g</li>
+			<li class="card-text list-group-item list-group-item-primary">Sugars: {{items.sugars}}g</li>
+			<li class="card-text list-group-item list-group-item-primary">Fats: {{items.fats}}g</li>
+		    <a class="btn btn-primary" href="{{url_for('editFoodItem', foodgroup_id = foodgroup.id, fooditem_id = items.id) }}">Edit Item</a>
+			<a class="btn btn-danger" href="{{url_for('deleteFoodItem', foodgroup_id = foodgroup.id, fooditem_id = items.id) }}">Delete Item</a>
+		  </div>
+		</div>
+		{% endfor %}
+	</div>
+{% endblock %}

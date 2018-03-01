@@ -1,0 +1,46 @@
+{% extends "main.html" %}
+{% include "header.html" %}
+{% block content %}
+	<div class="container">
+		<div class="card mt-5">
+			<div class="container">
+				<div class="row banner menu">
+					<div class="col-md-11 col-md-offset-1 padding-none">
+						<h1>Your Food Item Results</h1>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 col-md-offset-1 padding-top">
+						<form action="{{url_for('addSearchedItem', foodgroup_id = foodgroup_id)}}" method = "post">
+							<div class="form-group">
+								<label for="name">Name:</label>
+								<input type ="text" maxlength="25" class="form-control" name="name" value="{{response['report']['food']['name']}}">
+								
+								<label for="price">Calories:</label>
+									<input type ="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10" class="form-control" name="calories" value="{{response['report']['food']['nutrients'][0]['value']}}">
+
+								<label for="price">Carbohydrates:</label>
+									<input type ="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10" class="form-control" name="carbs" value="{{response['report']['food']['nutrients'][3]['value']}}">
+
+								<label for="price">Sugars:</label>
+									<input type ="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10" class="form-control" name="sugars" value="{{response['report']['food']['nutrients'][5]['value']}}">
+
+								<label for="price">Fats:</label>
+									<input type ="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10" class="form-control mb-3" name="fats" value="{{response['report']['food']['nutrients'][2]['value']}}">
+
+									<button type="submit" class="btn btn-success" id="submit" type="submit">
+									<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Save</button>
+								<a href = "{{url_for('showFoodGroups')}}">
+									<button class="btn btn-danger delete">
+									<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel</button>
+								</a>
+							</div>
+						</form>
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+	</div>
+{% endblock %}

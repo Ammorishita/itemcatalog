@@ -1,0 +1,51 @@
+{% extends "main.html" %}
+{% include "header.html" %}
+{% block content %}
+<div class="container">
+	<div class="card col-md-6 offset-md-3 mt-4">
+		<div class="row banner menu">
+			<div class="col-md-12 col-md-offset-1 padding-none">
+				<h4>Search USDA database for a food item</h4>
+			</div>
+		</div>
+		<div class="row">
+			<form class="col-md-12" action="{{url_for('searchFoodItem', foodgroup_id = foodgroup_id)}}" method="post">
+				<label for="foodName">Food Item:</label>
+				<input type="text" maxlength="25" name="foodName" pattern="[^' ']+" title="Request cannot contain spaces">
+				<input class="btn btn-primary" type="submit" value="Search">
+			</form>
+		</div>
+	</div>
+	<div class="card col-md-6 offset-md-3 mt-5">
+		<div class="row">
+			<div class="col-md-12 padding-top">
+				<form action="#" method = "post">
+					<div class="form-group">
+						<h4>Input your own food item values</h4>
+						<label for="name">Name:</label>
+						<input type ="text" maxlength="100" class="form-control" name="name">
+
+						<label for="price">Calories:</label>
+							<input type ="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10" class="form-control" name="calories">
+
+						<label for="price">Carbohydrates:</label>
+							<input type ="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10" class="form-control" name="carbs">
+
+						<label for="price">Sugars:</label>
+							<input type ="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10" class="form-control" name="sugars">
+
+						<label for="price">Fats:</label>
+							<input type ="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10" class="form-control" name="fats">
+						<button type="submit" class="btn btn-success" id="submit" type="submit">
+						<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Save</button>
+						<a href = '{{url_for('showFoodGroups')}}'>
+							<button class="btn btn-danger delete">
+							<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel</button>
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
