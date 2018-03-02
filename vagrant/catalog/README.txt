@@ -1,5 +1,5 @@
 
-Project Titile: FOOD GROUPS
+Project Title: FOOD GROUPS
 
 Description: Food Groups receives and stores food item data in a database using SQL Alchemy.  Users can search the USDA database for food items and save the nutrional value into their own database using personal authentication and authorization security.
 
